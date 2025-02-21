@@ -1,0 +1,68 @@
+# Copyright (c) 2025, a and contributors
+# For license information, please see license.txt
+
+import frappe
+from frappe.model.document import Document
+
+
+
+class overtimesalary(Document):
+    def before_save(self):
+        employee_name=self.employee_name
+        normal_ot=self.normal_ot
+        holiday_ot=self.holiday_ot
+    
+        
+        
+        
+        latest_entry = frappe.get_all(
+                                        "Salary Structure Assignment",
+                                        filters={"employee_name": employee_name},  # Optional filter
+                                        fields=["base", "creation"],  # Fetch required fields
+                                        order_by="creation DESC",  # Order by creation date (latest first)
+                                        limit_page_length=1  # Fetch only the latest entry
+                                    )
+        if latest_entry:
+            latest_doc = latest_entry[0]
+            self.base_salary=latest_doc["base"]
+        
+        self.total_present_days = self.total_working_days - self.absent_days
+        
+        #Overtime Calculation
+        int_base_salary =int(self.base_salary)
+        temp= (int_base_salary/30)/8
+        var=int(temp)
+        
+        temp_normal_overtime =(var * 1.2)* int(normal_ot)
+        # print(temp_normal_overtime)
+        self.normal_overtime_amount=temp_normal_overtime
+        
+        temp_holiday_overtime=(var * 1.2)* int(holiday_ot)
+        self.holiday_overtime_amount=temp_holiday_overtime
+        
+    def before_submit(self):
+        additional_salary_normal_overtime= frappe.get_doc({
+            "doctype":"Additional Salary",
+            "employee":self.employee,
+            "salary_component":"Normal overtime",
+            "amount":self.normal_overtime_amount,
+            "payroll_date": self.posting_date
+            
+        })
+        additional_salary_normal_overtime.save()
+        additional_salary_normal_overtime.submit()
+        
+        additional_salary_holiday_overtime= frappe.get_doc({
+            "doctype":"Additional Salary",
+            "employee":self.employee,
+            "salary_component":"Holiday overtime",
+            "amount":self.holiday_overtime_amount,
+            "payroll_date": self.posting_date
+            
+        })
+        additional_salary_holiday_overtime.save()
+        additional_salary_holiday_overtime.submit()
+        
+        
+        
+        

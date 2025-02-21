@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-02-15 18:46:55.949251",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "activity_type",
+  "hr",
+  "date",
+  "weekday",
+  "name1"
+ ],
+ "fields": [
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name"
+  },
+  {
+   "fieldname": "hr",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Hr"
+  },
+  {
+   "fieldname": "activity_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Activity Type"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "weekday",
+   "fieldtype": "Data",
+   "label": " Weekday"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-02-17 08:50:28.013058",
+ "modified_by": "Administrator",
+ "module": "aaa",
+ "name": "Employee Overtime Calculation child",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

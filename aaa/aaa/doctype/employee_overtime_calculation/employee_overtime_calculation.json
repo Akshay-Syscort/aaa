@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-02-15 17:15:36.123192",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "start_date",
+  "end_date",
+  "child_table",
+  "section_break_xtcj",
+  "week_hr",
+  "date_difference",
+  "column_break_uxwa",
+  "total_present_days",
+  "base_salary"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Datetime",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Datetime",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "child_table",
+   "fieldtype": "Table",
+   "label": "Child table",
+   "options": "Employee Overtime Calculation child"
+  },
+  {
+   "fieldname": "week_hr",
+   "fieldtype": "Int",
+   "label": "Week Hr"
+  },
+  {
+   "fieldname": "date_difference",
+   "fieldtype": "Int",
+   "label": "Date difference"
+  },
+  {
+   "fieldname": "total_present_days",
+   "fieldtype": "Int",
+   "label": "Total Present Days"
+  },
+  {
+   "fieldname": "section_break_xtcj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_uxwa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "base_salary",
+   "fieldtype": "Int",
+   "label": "Base Salary"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-16 13:58:49.800427",
+ "modified_by": "Administrator",
+ "module": "aaa",
+ "name": "Employee Overtime Calculation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
