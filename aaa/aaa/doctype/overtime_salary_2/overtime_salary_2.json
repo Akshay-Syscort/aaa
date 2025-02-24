@@ -1,0 +1,141 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2025-02-24 13:53:52.805248",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "base_salary",
+  "column_break_cglr",
+  "posting_date",
+  "normal_overtime_section",
+  "normal_ot",
+  "column_break_octb",
+  "normal_overtime_amount",
+  "holiday_overtime_section",
+  "holiday_ot",
+  "column_break_zuvx",
+  "holiday_overtime_amount",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "base_salary",
+   "fieldtype": "Data",
+   "label": "Base Salary"
+  },
+  {
+   "fieldname": "column_break_cglr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "normal_overtime_section",
+   "fieldtype": "Section Break",
+   "label": "Normal Overtime"
+  },
+  {
+   "fieldname": "normal_ot",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Normal OT (hr)"
+  },
+  {
+   "fieldname": "column_break_octb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "normal_overtime_amount",
+   "fieldtype": "Float",
+   "label": "Normal Overtime Amount"
+  },
+  {
+   "fieldname": "holiday_overtime_section",
+   "fieldtype": "Section Break",
+   "label": "Holiday Overtime"
+  },
+  {
+   "fieldname": "holiday_ot",
+   "fieldtype": "Data",
+   "label": "Holiday OT (hr)"
+  },
+  {
+   "fieldname": "column_break_zuvx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "holiday_overtime_amount",
+   "fieldtype": "Float",
+   "label": "Holiday Overtime Amount"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "overtime salary",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "overtime salary",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-02-24 14:02:00.872794",
+ "modified_by": "Administrator",
+ "module": "aaa",
+ "name": "Overtime Salary 2",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
