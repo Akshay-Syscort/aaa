@@ -6,75 +6,50 @@ from frappe.model.document import Document
 
 
 
-class overtimesalary(Document):
-    
-    
-    # def validate(self):
-    #     total_working_days=float(self.total_working_days)
-    #     absent_days=float(self.absent_days)
-        
-        
-    #     temp_total_present_days = total_working_days - absent_days
-    #     frappe.msgprint(temp_total_present_days)
-        
-        
+class overtimesalary(Document):     
     def before_save(self):
-        employee_name=self.employee_name
-       
+        employee_name=self.employee_name 
+        latest_salary_assignment = frappe.db.get_list(
+			"Salary Structure Assignment",
+			filters={"employee_name": employee_name},  # Replace with actual employee ID
+			fields=["base"],
+			order_by="creation DESC",
+			limit_page_length=1  # Fetch only the latest record
+		)
+        latest_salary = latest_salary_assignment[0]["base"]
+        # frappe.msgprint(f"Latest Base Salary: {latest_salary}")
+        self.base_salary=latest_salary    
         
-    
+        # latest_entry = frappe.get_all(
+        #                                 "Salary Structure Assignment",
+        #                                 filters={"employee_name": employee_name},  # Optional filter
+        #                                 fields=["base", "creation"],  # Fetch required fields
+        #                                 order_by="creation DESC",  # Order by creation date (latest first)
+        #                                 limit_page_length=1  # Fetch only the latest entry
+        #                             )
+        # if latest_entry:
+        #     latest_doc = latest_entry[0]
+        #     self.base_salary=latest_doc["base"]
+        #     # print(self.base_salary)
         
-        
-        
-        latest_entry = frappe.get_all(
-                                        "Salary Structure Assignment",
-                                        filters={"employee_name": employee_name},  # Optional filter
-                                        fields=["base", "creation"],  # Fetch required fields
-                                        order_by="creation DESC",  # Order by creation date (latest first)
-                                        limit_page_length=1  # Fetch only the latest entry
-                                    )
-        if latest_entry:
-            latest_doc = latest_entry[0]
-            self.base_salary=latest_doc["base"]
-            # print(self.base_salary)
-        
-        
-        
-    # def before_save(self):
-            # print(self.total_working_days)
-            # print(self.absent_days)
-            # float_total_working_days=float(self.total_working_days)
-            # float_absent_days=float(self.absent_days)
-            # print(float_total_working_days)
-            # print(float_absent_days)
-
-            
-            
-          
-            
-            
-            # Attendance Calculation
-            # float_present_day=float_total_working_days - float_absent_days
-            # print(float_present_day)
-            # self.total_present_days=float_present_day
             
             #Normal Overtime Calculation
-            normal_ot=float(self.normal_ot)  
-            temp_normal_overtime=(float(self.base_salary)/30/8)
-            #mul 1.2
-            temp_normal_overtime1=temp_normal_overtime*1.2
-            #mul* normal ot
-            temp_normal_overtime2=temp_normal_overtime1* normal_ot
-            self.normal_overtime_amount=temp_normal_overtime2
+        normal_ot=float(self.normal_ot)  
+        temp_normal_overtime=(float(self.base_salary)/30/8)
+        #mul 1.2
+        temp_normal_overtime1=temp_normal_overtime*1.2
+        #mul* normal ot
+        temp_normal_overtime2=temp_normal_overtime1* normal_ot
+        self.normal_overtime_amount=temp_normal_overtime2
           
             
       
-            #holiday Overtime
-            holiday_ot=float(self.holiday_ot)
-            # mul *1.5
-            temp_normal_overtime3=temp_normal_overtime*1.5
-            temp_normal_overtime4=temp_normal_overtime3 * holiday_ot
-            self.holiday_overtime_amount=temp_normal_overtime4
+        #holiday Overtime
+        holiday_ot=float(self.holiday_ot)
+        # mul *1.5
+        temp_normal_overtime3=temp_normal_overtime*1.5
+        temp_normal_overtime4=temp_normal_overtime3 * holiday_ot
+        self.holiday_overtime_amount=temp_normal_overtime4
             
             
             
