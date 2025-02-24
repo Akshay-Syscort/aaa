@@ -37,6 +37,7 @@ class OvertimeSalary2(Document):
                 "employee":self.employee,
                 "salary_component":"Normal overtime",
                 "amount":self.normal_overtime_amount,
+                "currency":"AED",
                 "payroll_date": self.posting_date
 
             })
@@ -49,6 +50,7 @@ class OvertimeSalary2(Document):
                 "employee":self.employee,
                 "salary_component":"Holiday overtime",
                 "amount":self.holiday_overtime_amount,
+                "currency":"AED",
                 "payroll_date": self.posting_date
                 
                 
