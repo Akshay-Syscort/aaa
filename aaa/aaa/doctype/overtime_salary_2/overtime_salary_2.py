@@ -30,7 +30,7 @@ class OvertimeSalary2(Document):
         temp_normal_overtime4=temp_normal_overtime3 * holiday_ot
         self.holiday_overtime_amount=temp_normal_overtime4
     
-        def before_submit(self):
+    def before_submit(self):
             additional_salary_normal_overtime= frappe.get_doc({
                 "doctype":"Additional Salary",
                 "employee":self.employee,
