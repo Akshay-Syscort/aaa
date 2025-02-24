@@ -29,30 +29,34 @@ class OvertimeSalary2(Document):
         temp_normal_overtime3=temp_normal_overtime*1.5
         temp_normal_overtime4=temp_normal_overtime3 * holiday_ot
         self.holiday_overtime_amount=temp_normal_overtime4
+    
+    
+    def before_submit(self):
+        additional_salary_normal_overtime= frappe.get_doc({
 		
   
-def before_submit(self):
-				additional_salary_normal_overtime= frappe.get_doc({
-					"doctype":"Additional Salary",
-					"employee":self.employee,
-					"salary_component":"Normal overtime",
-					"amount":self.normal_overtime_amount,
-					"payroll_date": self.posting_date
-					
-				})
-				additional_salary_normal_overtime.save()
-				additional_salary_normal_overtime.submit()
-				
-				additional_salary_holiday_overtime= frappe.get_doc({
-					"doctype":"Additional Salary",
-					"employee":self.employee,
-					"salary_component":"Holiday overtime",
-					"amount":self.holiday_overtime_amount,
-					"payroll_date": self.posting_date
-					
-				})
-				additional_salary_holiday_overtime.save()
-				additional_salary_holiday_overtime.submit()
+		
+		
+		"doctype":"Additional Salary",
+		"employee":self.employee,
+		"salary_component":"Normal overtime",
+		"amount":self.normal_overtime_amount,
+		"payroll_date": self.posting_date
+
+		})
+        additional_salary_normal_overtime.save()
+        additional_salary_normal_overtime.submit()
+        
+        additional_salary_holiday_overtime= frappe.get_doc({
+		"doctype":"Additional Salary",
+		"employee":self.employee,
+		"salary_component":"Holiday overtime",
+		"amount":self.holiday_overtime_amount,
+		"payroll_date": self.posting_date
+
+		})
+        additional_salary_holiday_overtime.save()
+        additional_salary_holiday_overtime.submit()
 		
 		
 		
