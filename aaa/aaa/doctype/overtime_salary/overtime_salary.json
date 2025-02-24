@@ -28,8 +28,10 @@
   {
    "fieldname": "employee",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Employee",
-   "options": "Employee"
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fetch_from": "employee.employee_name",
@@ -39,7 +41,7 @@
   },
   {
    "fieldname": "base_salary",
-   "fieldtype": "Int",
+   "fieldtype": "Data",
    "label": "Base Salary"
   },
   {
@@ -48,28 +50,36 @@
   },
   {
    "fieldname": "total_working_days",
-   "fieldtype": "Int",
-   "label": "Total Working Days"
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Total Working Days",
+   "reqd": 1
   },
   {
    "fieldname": "total_present_days",
-   "fieldtype": "Int",
-   "label": "Total Present Days"
+   "fieldtype": "Data",
+   "label": "Total Present Days",
+   "precision": "2"
   },
   {
    "fieldname": "normal_ot",
-   "fieldtype": "Int",
-   "label": "Normal OT (hr)"
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Normal OT (hr)",
+   "reqd": 1
   },
   {
    "fieldname": "holiday_ot",
-   "fieldtype": "Int",
-   "label": "Holiday OT (hr)"
+   "fieldtype": "Data",
+   "label": "Holiday OT (hr)",
+   "reqd": 1
   },
   {
    "fieldname": "absent_days",
-   "fieldtype": "Int",
-   "label": "Absent Days"
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Absent Days",
+   "reqd": 1
   },
   {
    "fieldname": "normal_overtime_section",
@@ -82,7 +92,7 @@
   },
   {
    "fieldname": "normal_overtime_amount",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Normal Overtime Amount"
   },
   {
@@ -96,7 +106,7 @@
   },
   {
    "fieldname": "holiday_overtime_amount",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Holiday Overtime Amount"
   },
   {
@@ -118,7 +128,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-02-18 10:12:22.395072",
+ "modified": "2025-02-24 12:51:10.377826",
  "modified_by": "Administrator",
  "module": "aaa",
  "name": "overtime salary",
