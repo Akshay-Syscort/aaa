@@ -41,12 +41,12 @@ class overtimesalary(Document):
         
         
     def before_save(self):
-            print(self.total_working_days)
-            print(self.absent_days)
-            float_total_working_days=float(self.total_working_days)
-            float_absent_days=float(self.absent_days)
-            print(float_total_working_days)
-            print(float_absent_days)
+            # print(self.total_working_days)
+            # print(self.absent_days)
+            # float_total_working_days=float(self.total_working_days)
+            # float_absent_days=float(self.absent_days)
+            # print(float_total_working_days)
+            # print(float_absent_days)
 
             
             
@@ -54,9 +54,9 @@ class overtimesalary(Document):
             
             
             # Attendance Calculation
-            float_present_day=float_total_working_days - float_absent_days
-            print(float_present_day)
-            self.total_present_days=float_present_day
+            # float_present_day=float_total_working_days - float_absent_days
+            # print(float_present_day)
+            # self.total_present_days=float_present_day
             
             #Normal Overtime Calculation
             normal_ot=float(self.normal_ot)  
