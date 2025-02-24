@@ -18,7 +18,7 @@ class overtimesalary(Document):
     #     frappe.msgprint(temp_total_present_days)
         
         
-    def validate(self):
+    def before_save(self):
         employee_name=self.employee_name
        
         
@@ -40,7 +40,7 @@ class overtimesalary(Document):
         
         
         
-    def before_save(self):
+    # def before_save(self):
             # print(self.total_working_days)
             # print(self.absent_days)
             # float_total_working_days=float(self.total_working_days)
