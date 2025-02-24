@@ -32,17 +32,10 @@ class OvertimeSalary2(Document):
     
     
     def before_submit(self):
-        additional_salary_normal_overtime= frappe.get_doc({
-		
-  
-		
-		
-		"doctype":"Additional Salary",
+        additional_salary_normal_overtime= frappe.get_doc({"doctype":"Additional Salary",
 		"employee":self.employee,
 		"salary_component":"Normal overtime",
-		"amount":self.normal_overtime_amount,
-		"payroll_date": self.posting_date
-
+		"amount":self.normal_overtime_amount,"payroll_date": self.posting_date
 		})
         additional_salary_normal_overtime.save()
         additional_salary_normal_overtime.submit()
